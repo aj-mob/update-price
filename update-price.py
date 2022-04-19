@@ -10,6 +10,7 @@ def lambda_handler(event, context):
         Item={
 
             'productId': event['productId'],
+            'productName': event['productName'],
             'price': event['price']
         }
     )
