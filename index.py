@@ -9,13 +9,13 @@ def lambda_handler(event, context):
     response = table.put_item(
         Item={
 
-            'productId': event['productId'],
-            'productName': event['productName'],
-            'price': event['price']
+            'productId': event['queryStringParameters']['productId'],
+            'productName': event['queryStringParameters']['productName'],
+            'price': event['queryStringParameters']['price']
         }
     )
 
     return {
         'statusCode': response['ResponseMetadata']['HTTPStatusCode'],
-        'body': 'Product ' + event['productId'] + ' updated'
+        'body': 'Product ' + event['queryStringParameters']['productId'] + ' updated'
     }
